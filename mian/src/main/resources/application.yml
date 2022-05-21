@@ -1,0 +1,71 @@
+
+spring:
+  #通用的数据源配置
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/epidemic_prevention_management?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+  #
+  #解决Swagger已Springboot的冲突
+  #  2.6.0开始使用基于PathPatternParser的路径匹配，而Springfox版本一直没有更新还是
+  #  使用的AntPathMatcher导致了这个问题，要处理问题也很简单，修改yaml文件，
+  #  将SpringBoot路劲匹配模式修改为AntPathMatcher就可以了，
+  #  配置如下：spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER
+
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  #  jpa:
+  #    #这个参数是在建表的时候，将默认的存储引擎切换为 InnoDB 用的
+  #    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  #    #配置在日志中打印出执行的 SQL 语句信息。
+  #    show-sql: true
+  #    hibernate:
+  #      #配置指明在程序启动的时候要删除并且创建实体类对应的表
+  #      ddl-auto: create
+
+
+mybatis-plus:
+  global-config:
+    db-config:
+      # 表名前缀
+      #      table-prefix: tb_
+      # id生成策略 数据库自增
+      id-type: auto
+  configuration:
+    # 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 分页配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+# shiro配置
+#shiro:
+#  loginUrl: /login
+#  successUrl: /
+#
