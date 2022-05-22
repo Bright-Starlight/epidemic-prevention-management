@@ -112,7 +112,7 @@ class Main extends Component{
                         <Content>
                             <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
                                 <Switch>
-                                    <Route path="/report" component={HospitalTable}/>
+                                    <Route path="/hospital" component={HospitalTable}/>
                                 </Switch>
                             </div>
                         </Content>

@@ -2,10 +2,10 @@ import {Button, Input, message, Space, Table} from 'antd';
 import Highlighter from 'react-highlight-words';
 import {SearchOutlined} from '@ant-design/icons';
 import React from 'react';
-import CreateHospital from '../CreateHospital/index'
-import UpdateHospital from "../UpdateHospital/index";
+import CreateHospital from './CreateHospital/index'
+import UpdateHospital from "./UpdateHospital/index";
 import axios from "axios";
-import DeleteHospital from "../DeleteHospital";
+import DeleteHospital from "./DeleteHospital";
 
 
 
@@ -13,11 +13,16 @@ class HospitalTable extends React.Component {
 
 
    componentDidMount() {
-       axios.get("http://localhost:3000/hospital/getData").then(
+       this.page = 1
+       this.pageSize = 5
+       axios.get("http://localhost:3000/hospital/getData",{params:{
+           page:1,
+               pageSize:5
+           }}).then(
            res => {
                if (res.data.flag === true){
-                   let data = res.data.data
-                   this.setState({data:[...data]})
+                   let data = res.data.data.list
+                   this.setState({data:[...data],total:res.data.data.total})
                }else {
                    message.error(res.data.message)
                }
@@ -31,6 +36,27 @@ class HospitalTable extends React.Component {
         searchText: '',
         searchedColumn: '',
     };
+    page = 0;
+    pageSize = 0;
+
+   onChange = (page,pageSize)=>{
+       this.page = page
+       this.pageSize = pageSize
+       axios.get("http://localhost:3000/hospital/getData",{params:{
+               page:page,
+               pageSize:pageSize
+           }}).then(
+           res => {
+               if (res.data.flag === true){
+                   let data = res.data.data.list
+                   this.setState({data:[...data],total:res.data.data.total})
+               }else {
+                   message.error(res.data.message)
+               }
+
+           }
+       )
+   }
 
     getColumnSearchProps = dataIndex => ({
         filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters}) => (
@@ -160,18 +186,21 @@ class HospitalTable extends React.Component {
                 dataIndex: '',
                 key: 'x',
                 render: (text) => <div>
-                    <UpdateHospital data={text} a={1515}/>
+                    <UpdateHospital data={text} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
                     <br/>
-                    <DeleteHospital id={text.id}/>
+                    <DeleteHospital  id={text.id} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
                 </div>,
             },
         ];
         return <div>
             <h3><b>控制台首页</b></h3>
-            <div style={{float:"right"}}><CreateHospital/></div>
+            <div style={{float:"right"}}><CreateHospital refresh={this.onChange}/></div>
             <Table columns={columns}
                    size="small"
-                   pagination={{defaultPageSize:5}}
+                   pagination={{defaultPageSize:5,
+                       current:this.state.current,
+                       onChange:this.onChange,total:this.state.total
+                   }}
                    dataSource={this.state.data}/>
         </div>;
     }
