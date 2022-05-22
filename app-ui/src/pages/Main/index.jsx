@@ -3,6 +3,7 @@ import {createFromIconfontCN} from '@ant-design/icons';
 import React, {Component} from 'react';
 import HospitalTable from "../HospitalTable";
 import {Link, Route, Switch, withRouter} from "react-router-dom";
+import IntimateTable from "../IntimateTable";
 
 
 const {Header, Content, Sider} = Layout;
@@ -39,7 +40,7 @@ const list = [
     },
     {
         icon: <IconFont style={{fontSize: "40px"}} type="icon-jijiubao"/>,
-        children: [{title: "自愈列表", key: "cure",url: "/cure"}],
+        children: [{title: "新增自愈", key: "die",url: "/newCure"},{title: "自愈列表", key: "cure",url: "/cure"}],
         key: 5
     },
     {
@@ -112,6 +113,7 @@ class Main extends Component{
                         <Content>
                             <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
                                 <Switch>
+                                    <Route path="/intimate" component={IntimateTable}/>
                                     <Route path="/hospital" component={HospitalTable}/>
                                 </Switch>
                             </div>

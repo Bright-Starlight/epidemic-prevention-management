@@ -71,7 +71,7 @@ public class AreaCodeList {
 
     }
 
-}
+
 
 //生成身份证工具类
 
@@ -94,16 +94,16 @@ public class AreaCodeList {
  * 并且我国的计算机应用系统也不承认19位的身份证号码。Ⅹ是罗马数字的10，用X来代替10，可以保证公民的身份证符合国家标准
  * 代码源于网络 由kingYiFan整理  create2019/05/24
  */
-class IdCardRandom extends AreaCodeList {
+
 
     /**
      * 生成随机地区编码
      *
      * @return
      */
-    private int randomAreaCode() {
-        int index = (int) (Math.random() * super.areaCode.size());
-        Collection<Integer> values = super.areaCode.values();
+    private static int randomAreaCode() {
+        int index = (int) (Math.random() * areaCode.size());
+        Collection<Integer> values = areaCode.values();
         Iterator<Integer> it = values.iterator();
         int i = 0;
         int code = 0;
@@ -117,7 +117,7 @@ class IdCardRandom extends AreaCodeList {
     /**
      * 随机出生日期
      */
-    private String randomBirthday() {
+    private static String randomBirthday() {
         Calendar birthday = Calendar.getInstance();
         birthday.set(Calendar.YEAR, (int) (Math.random() * 60) + 1950);
         birthday.set(Calendar.MONTH, (int) (Math.random() * 12));
@@ -143,7 +143,7 @@ class IdCardRandom extends AreaCodeList {
      *
      * @return
      */
-    private String randomCode() {
+    private static String randomCode() {
         int code = (int) (Math.random() * 1000);
         if (code < 10) {
             return "00" + code;
@@ -160,7 +160,7 @@ class IdCardRandom extends AreaCodeList {
      * @param chars
      * @return
      */
-    private char calcTrailingNumber(char[] chars) {
+    private static char calcTrailingNumber(char[] chars) {
         if (chars.length < 17) {
             return ' ';
         }
@@ -182,18 +182,14 @@ class IdCardRandom extends AreaCodeList {
      *
      * @return
      */
-    public String generate() {
+    public static String generate() {
         StringBuilder generater = new StringBuilder();
-        generater.append(this.randomAreaCode());
-        generater.append(this.randomBirthday());
-        generater.append(this.randomCode());
-        generater.append(this.calcTrailingNumber(generater.toString().toCharArray()));
+        generater.append(randomAreaCode());
+        generater.append(randomBirthday());
+        generater.append(randomCode());
+        generater.append(calcTrailingNumber(generater.toString().toCharArray()));
         return generater.toString();
-    }
-    public static void main(String[] args) {
-        IdCardRandom g = new IdCardRandom();
-        String generate = g.generate();
-        System.out.println(generate);
-    }
+    }}
 
-}
+
+

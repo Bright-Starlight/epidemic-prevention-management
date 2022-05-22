@@ -1,13 +1,18 @@
 package com.parachute.main;
 
 import com.parachute.main.constant.RoleConstants;
+import com.parachute.main.entity.Carrier;
 import com.parachute.main.entity.Hospital;
+import com.parachute.main.service.CarrierService;
 import com.parachute.main.service.HospitalService;
+import com.parachute.main.utils.AreaCodeList;
+import com.parachute.main.utils.NameRandom;
 import com.parachute.main.utils.RandomValue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +21,8 @@ public class CreateDataUtils {
 
     @Autowired
     private HospitalService hospitalService;
+    @Autowired
+    private CarrierService carrierService;
 
     private static Random ran=new Random();
     private final static int delta=0x9fa5-0x4e00+1;
@@ -24,7 +31,7 @@ public class CreateDataUtils {
     }
 
     @Test
-    public  void createData() throws Exception {
+    public  void createDataHospital() throws Exception {
         for (int i = 0; i < 50; i++) {
             String s = create();
             String t = create();
@@ -37,6 +44,27 @@ public class CreateDataUtils {
             hospital.setUpdateName(RoleConstants.ADMIN);
             System.out.println(hospital.toString());
             hospitalService.insert(hospital);
+        }
+    }
+    @Test
+    public  void createDataPerson() throws Exception {
+
+        for (int i = 0; i < 20; i++) {
+            Carrier carrier = new Carrier();
+            String chineseName = NameRandom.getChineseName();
+            String[] split = chineseName.split(":");
+            carrier.setName(split[1]);
+            carrier.setAge(ran.nextInt(80));
+            carrier.setGender(split[0]);
+            carrier.setHomeAddress(RandomValue.getRoad());
+            carrier.setTelephoneNumber(RandomValue.getTel());
+            carrier.setIdentityCard(AreaCodeList.generate());
+            carrier.setCause("未知");
+            int i1 = ran.nextInt(80);
+            carrier.setFromHospital(i1 + "");
+            carrier.setIsolationTime(LocalDateTime.now());
+            int a = (int) (Math.random() * 3);
+            carrierService.insert(carrier);
         }
     }
 

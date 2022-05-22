@@ -34,7 +34,7 @@ public class HospitalServiceImpl extends ServiceImpl<HospitalDao, Hospital> impl
     public void insert(Hospital hospital) {
        hospital.setUpdateTime(LocalDateTime.now());
        hospital.setCreateTime(LocalDateTime.now());
-        hospital.setUpdateName(RoleConstants.ADMIN);
+       hospital.setUpdateName(RoleConstants.ADMIN);
         super.save(hospital);
     }
 }

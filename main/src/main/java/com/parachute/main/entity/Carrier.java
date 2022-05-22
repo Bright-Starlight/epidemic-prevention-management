@@ -1,6 +1,6 @@
 package com.parachute.main.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -27,13 +27,13 @@ public class Carrier extends Model<Carrier> {
     //家庭地址
     private String homeAddress;
     //电话号码
-    private Integer telephoneNumber;
+    private String telephoneNumber;
     //接触原因
     private String cause;
     //所在医院
-    private String formHosptial;
+    private String fromHospital;
     //隔离时间
-    private Date isolationTime;
+    private LocalDateTime isolationTime;
     //是否确诊 1 确诊
     private String isConfirm;
     //是否 治愈 1治愈
@@ -41,11 +41,11 @@ public class Carrier extends Model<Carrier> {
     //是否死亡  1死亡
     private String isDie;
     //创建时间
-    private Date createTime;
+    private LocalDateTime createTime;
     //修改时间
-    private Date updateTime;
+    private LocalDateTime updateTime;
     //修改人
-    private Date updateName;
+    private String updateName;
     //是否删除 1删除
     @TableLogic
     private String isDelete;
@@ -99,11 +99,11 @@ public class Carrier extends Model<Carrier> {
         this.homeAddress = homeAddress;
     }
 
-    public Integer getTelephoneNumber() {
+    public String getTelephoneNumber() {
         return telephoneNumber;
     }
 
-    public void setTelephoneNumber(Integer telephoneNumber) {
+    public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
 
@@ -115,19 +115,19 @@ public class Carrier extends Model<Carrier> {
         this.cause = cause;
     }
 
-    public String getFormHosptial() {
-        return formHosptial;
+    public String getFromHospital() {
+        return fromHospital;
     }
 
-    public void setFormHosptial(String formHosptial) {
-        this.formHosptial = formHosptial;
+    public void setFromHospital(String fromHospital) {
+        this.fromHospital = fromHospital;
     }
 
-    public Date getIsolationTime() {
+    public LocalDateTime getIsolationTime() {
         return isolationTime;
     }
 
-    public void setIsolationTime(Date isolationTime) {
+    public void setIsolationTime(LocalDateTime isolationTime) {
         this.isolationTime = isolationTime;
     }
 
@@ -155,27 +155,27 @@ public class Carrier extends Model<Carrier> {
         this.isDie = isDie;
     }
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 
-    public Date getUpdateName() {
+    public String getUpdateName() {
         return updateName;
     }
 
-    public void setUpdateName(Date updateName) {
+    public void setUpdateName(String updateName) {
         this.updateName = updateName;
     }
 
