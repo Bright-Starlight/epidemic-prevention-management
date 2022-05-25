@@ -9,7 +9,9 @@ import IsolationComplete from "../IsolationCompleteTable";
 import ConfirmTable from "../ConfirmTable";
 import NewConfirmTable from "../NewConfirmTable";
 import CureTable from "../CureTable";
-import NewCureTable from "../../NewCureTable";
+import NewCureTable from "../NewCureTable";
+import DieTable from "../DieTable";
+import NewDieTable from "../NewDieTable";
 
 
 const {Header, Content, Sider} = Layout;
@@ -51,7 +53,7 @@ const list = [
     },
     {
         icon: <IconFont style={{fontSize: "40px"}} type="icon-aixin"/>,
-        children: [{title: "遇难列表", key: "die",url: "/die"}],
+        children: [{title: "新增遇难", key: "newDie",url: "/newDie"},{title: "遇难列表", key: "die",url: "/die"}],
         key: 6
     },
     {
@@ -127,6 +129,8 @@ class Main extends Component{
                                     <Route path="/newConfirm" component={NewConfirmTable}/>
                                     <Route path="/cure" component={CureTable}/>
                                     <Route path="/newCure" component={NewCureTable}/>
+                                    <Route path="/die" component={DieTable}/>
+                                    <Route path="/newDie" component={NewDieTable}/>
                                 </Switch>
                             </div>
                         </Content>

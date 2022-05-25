@@ -2,10 +2,10 @@ import {Button, Input, message, Space, Table} from 'antd';
 import Highlighter from 'react-highlight-words';
 import {SearchOutlined} from '@ant-design/icons';
 import React from 'react';
-import CreateIsolation from './CreateCure/index'
-import UpdateIsolation from "./UpdateCure/index";
+import CreateCure from './CreateCure/index'
+import UpdateCure from "./UpdateCure/index";
 import axios from "axios";
-import DeleteIsolation from "./DeleteCure/index";
+import DeleteCure from "./DeleteCure/index";
 
 
 
@@ -208,16 +208,16 @@ class CureTable extends React.Component {
                 dataIndex: '',
                 key: 'x',
                 render: (text) => <div>
-                    <UpdateIsolation data={text} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
+                    <UpdateCure data={text} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
                     <br/>
-                    <DeleteIsolation  id={text.id} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
+                    <DeleteCure  id={text.id} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
 
                 </div>,
             },
         ];
         return <div>
             <h3><b>控制台首页</b></h3>
-            <div style={{float:"right"}}><CreateIsolation refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
+            <div style={{float:"right"}}><CreateCure refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"
                    pagination={{defaultPageSize:5,

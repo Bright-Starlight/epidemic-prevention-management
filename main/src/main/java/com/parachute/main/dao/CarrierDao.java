@@ -65,5 +65,7 @@ public interface CarrierDao extends BaseMapper<Carrier> {
             " is_cure = '0' and is_delete = '0' and is_isolation = '0'" +
             " ")
     List<Carrier> selectNewIntimate(@Param("date") String date);
+    @Select("SELECT * from carrier where update_time like #{date} and is_die = '1' and is_delete = '0'")
+    List<Carrier> getNewDie(String s);
 }
 

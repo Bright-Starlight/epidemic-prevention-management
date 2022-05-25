@@ -116,5 +116,21 @@ public interface CarrierService extends IService<Carrier> {
      * @return {@link List}<{@link Carrier}>
      */
     List<Carrier> getNewCure();
+
+    /**
+     * 会死
+     *
+     * @return {@link List}<{@link Carrier}>
+     */
+    List<Carrier> getDie();
+
+    /**
+     * 插入模
+     *
+     * @param carrier 航空公司
+     */
+    void insertDie(Carrier carrier);
+
+    List<Carrier> getNewDie();
 }
 

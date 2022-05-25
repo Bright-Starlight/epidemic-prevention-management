@@ -219,6 +219,43 @@ public class CarrierServiceImpl extends ServiceImpl<CarrierDao, Carrier> impleme
 
     }
 
+    @Override
+    public List<Carrier> getDie() {
+        LambdaQueryWrapper<Carrier> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper
+                .eq(Carrier::getIsCure,0)
+                .eq(Carrier::getIsConfirm,0)
+                .eq(Carrier::getIsDie,1);
+        List<Carrier> list = this.list(queryWrapper);
+        list.forEach(obj->{
+            String hospitalName = carrierDao.getHospitalName(obj.getFromHospital());
+            obj.setFromHospital(hospitalName);
+        });
+        return list;
+    }
+
+    @Override
+    public void insertDie(Carrier carrier) {
+        carrier.setCreateTime(LocalDateTime.now());
+        carrier.setUpdateTime(LocalDateTime.now());
+        carrier.setUpdateName(RoleConstants.ADMIN);
+        carrier.setIsDie("1");
+        this.save(carrier);
+    }
+
+    @Override
+    public List<Carrier> getNewDie() {
+        String s = DateUtils.date2String(new Date());
+        String[] date = s.split(" ");
+        List<Carrier> list = carrierDao.getNewDie(date[0] + '%');
+        list.forEach(obj->{
+            String hospitalName = carrierDao.getHospitalName(obj.getFromHospital());
+            obj.setFromHospital(hospitalName);
+        });
+        return list;
+    }
+
+
     public Boolean selectIdentityCard(Carrier carrier){
         LambdaUpdateWrapper<Carrier> wrapper = new LambdaUpdateWrapper<>();
         wrapper.eq(Carrier::getIdentityCard,carrier.getIdentityCard());

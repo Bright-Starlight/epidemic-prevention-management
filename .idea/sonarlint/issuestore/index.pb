@@ -1,10 +1,4 @@
 
-Y
-)app-ui/src/pages/DeleteHospital/index.jsx,4\f\4f9bc18c40a7b784fc6fe5a3326a6f193b2813b5
-Y
-)app-ui/src/pages/UpdateHospital/index.jsx,8\2\829e50f963cf4eb3297500cf670f31b6d0c552ac
-Y
-)app-ui/src/pages/CreateHospital/index.jsx,f\d\fd467a467029d96503dbe192427f0feab6db0ceb
 Ž
 ^.idea/dataSources/a1e37c8d-43fe-40c6-aee0-c2e51608d802/storage_v2/_src_/schema/sys.zb4BAA.meta,d\8\d8963558055e0c1aaa61ee428094209cf7fcc159
 j
@@ -223,5 +217,3 @@ i
 9.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_0.xml,8\4\84f2ecf757628dc157db06b2c9aa0786a852e4b8
 b
 2.idea/libraries/Maven__org_yaml_snakeyaml_1_30.xml,3\c\3c9053362206afff74805f76190a4db80d948973
-x
-Hmain/src/main/java/com/parachute/mian/controller/HospitalController.java,e\a\ea7069037866538f62e21c7bf9de89cd700907c7

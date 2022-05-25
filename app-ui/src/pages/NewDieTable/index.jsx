@@ -2,21 +2,21 @@ import {Button, Input, message, Space, Table} from 'antd';
 import Highlighter from 'react-highlight-words';
 import {SearchOutlined} from '@ant-design/icons';
 import React from 'react';
-import CreateConfirm from './CreateConfirm/index'
-import UpdateConfirm from "./UpdateConfirm/index";
+import CreateDie from './CreateDie/index'
+import UpdateDie from "./UpdateDie/index";
 import axios from "axios";
-import DeleteConfirm from "./DeleteConfirm/index";
-import UpdateState from './UpdateState/index'
+import DeleteDie from "./DeleteDie/index";
 
 
 
-class NewConfirmTable extends React.Component {
+
+class NewDieTable extends React.Component {
 
 
    componentDidMount() {
        this.page = 1
        this.pageSize = 5
-       axios.get("http://localhost:3000/carrier/getNewConfirm",{params:{
+       axios.get("http://localhost:3000/carrier/getNewDie",{params:{
            page:1,
                pageSize:5
            }}).then(
@@ -43,7 +43,7 @@ class NewConfirmTable extends React.Component {
    onChange = (page,pageSize)=>{
        this.page = page
        this.pageSize = pageSize
-       axios.get("http://localhost:3000/carrier/getNewConfirm",{params:{
+       axios.get("http://localhost:3000/carrier/getNewDie",{params:{
                page:page,
                pageSize:pageSize
            }}).then(
@@ -208,25 +208,16 @@ class NewConfirmTable extends React.Component {
                 dataIndex: '',
                 key: 'x',
                 render: (text) => <div>
-                    <UpdateConfirm data={text} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
+                    <UpdateDie data={text} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
                     <br/>
-                    <DeleteConfirm  id={text.id} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
+                    <DeleteDie  id={text.id} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
 
-                </div>,
-            },
-            {
-                title: '修改',
-                dataIndex: '',
-                key: 'x',
-                render: (text) => <div>
-
-                    <UpdateState  id={text.id} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
                 </div>,
             },
         ];
         return <div>
             <h3><b>控制台首页</b></h3>
-            <div style={{float:"right"}}><CreateConfirm refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
+            <div style={{float:"right"}}><CreateDie refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"
                    pagination={{defaultPageSize:5,
@@ -238,4 +229,4 @@ class NewConfirmTable extends React.Component {
     }
 }
 
-export default NewConfirmTable;
+export default NewDieTable;

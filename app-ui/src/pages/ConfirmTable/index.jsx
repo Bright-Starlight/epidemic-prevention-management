@@ -2,10 +2,10 @@ import {Button, Input, message, Space, Table} from 'antd';
 import Highlighter from 'react-highlight-words';
 import {SearchOutlined} from '@ant-design/icons';
 import React from 'react';
-import CreateIsolation from './CreateConfirm/index'
-import UpdateIsolation from "./UpdateConfirm/index";
+import CreateConfirm from './CreateConfirm/index'
+import UpdateConfirm from "./UpdateConfirm/index";
 import axios from "axios";
-import DeleteIsolation from "./DeleteConfirm/index";
+import DeleteConfirm from "./DeleteConfirm/index";
 import UpdateState from './UpdateState/index'
 import UpdateToDie from "./UpdateToDie";
 
@@ -209,9 +209,9 @@ class ConfirmTable extends React.Component {
                 dataIndex: '',
                 key: 'x',
                 render: (text) => <div>
-                    <UpdateIsolation data={text} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
+                    <UpdateConfirm data={text} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
                     <br/>
-                    <DeleteIsolation  id={text.id} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
+                    <DeleteConfirm  id={text.id} refresh={()=>{this.onChange(this.page,this.pageSize)}}/>
 
                 </div>,
             },
@@ -229,7 +229,7 @@ class ConfirmTable extends React.Component {
         ];
         return <div>
             <h3><b>控制台首页</b></h3>
-            <div style={{float:"right"}}><CreateIsolation refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
+            <div style={{float:"right"}}><CreateConfirm refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"
                    pagination={{defaultPageSize:5,
