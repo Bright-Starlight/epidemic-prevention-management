@@ -1,8 +1,10 @@
 package com.parachute.main.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.parachute.main.constant.ValidateConstants;
 import com.parachute.main.entity.Hospital;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -18,8 +20,23 @@ public interface HospitalService extends IService<Hospital> {
      *
      * @return {@link List}<{@link Hospital}>
      */
-    List<Hospital> getAll();
+    List<Hospital> getPage();
 
+    /**
+     * 插入
+     *
+     * @param hospital 医院
+     */
     void insert(Hospital hospital);
+
+    /**
+     * 验证表单
+     *
+     * @param hospital 医院
+     * @return {@link Boolean}
+     */
+    ValidateConstants validate(Hospital hospital);
+
+    List<HashMap<String, String>> getAll();
 }
 

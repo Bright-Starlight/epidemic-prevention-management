@@ -49,7 +49,16 @@ public class Carrier extends Model<Carrier> {
     //是否删除 1删除
     @TableLogic
     private String isDelete;
+    //是否隔离
+    private String isIsolation;
 
+    public String getIsIsolation() {
+        return isIsolation;
+    }
+
+    public void setIsIsolation(String isIsolation) {
+        this.isIsolation = isIsolation;
+    }
 
     public Integer getId() {
         return id;

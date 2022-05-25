@@ -16,16 +16,15 @@ function CollectionCreateForm (props){
         <Modal
 
             visible={visible}
-            title="添加医院信息"
-            okText="Create"
-            cancelText="Cancel"
+            title="修改医院信息"
+            okText="修改"
+            cancelText="取消"
             onCancel={onCancel}
             getContainer={false}
             onOk={() => {
                 form
                     .validateFields()
                     .then((values) => {
-                        form.resetFields();
                         onCreate(values);
 
                     })
@@ -85,7 +84,7 @@ function CollectionCreateForm (props){
 };
 
 function UpdateHospital(props) {
-    console.log(props)
+
     let data = props.data
     let refresh = props.refresh
     const [visible, setVisible] = useState(false);
@@ -95,12 +94,13 @@ function UpdateHospital(props) {
         axios.post("http://localhost:3000/hospital/update", values).then(res => {
             if (res.data.flag === true) {
                 message.success(res.data.message)
+                setVisible(false);
                 refresh()
             } else {
                 message.error(res.data.message)
             }
         })
-        setVisible(false);
+
     };
 
     return (

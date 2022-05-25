@@ -13,6 +13,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.page.PageMethod;
 import com.parachute.main.constant.SysConstants;
+import com.parachute.main.constant.ValidateConstants;
 import com.parachute.main.entity.Hospital;
 import com.parachute.main.service.HospitalService;
 import com.parachute.main.utils.Result;
@@ -20,6 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -39,11 +42,22 @@ public class HospitalController {
     private HospitalService hospitalService;
 
 
+    @RequestMapping("/getAll")
+    public Result getAll(){
+        try {
+            List<HashMap<String, String>> data =  hospitalService.getAll();
+            return Result.of(true,"",data);
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            return Result.of(false,SysConstants.SERVER_EXCEPTION);
+        }
+    }
+
     @RequestMapping("/getData")
     public Result getData(Integer  page,Integer  pageSize){
         try {
             PageMethod.startPage(page,pageSize);
-            List<Hospital> data =  hospitalService.getAll();
+            List<Hospital> data =  hospitalService.getPage();
             PageInfo<Hospital> info = new PageInfo<>(data);
             return Result.of(true,"",info);
         }catch (Exception e){
@@ -56,8 +70,12 @@ public class HospitalController {
     @RequestMapping("/insert")
     public Result insert(@RequestBody Hospital hospital){
         try {
-            hospitalService.insert(hospital);
-            return Result.of(true,SysConstants.INSERT_SUCCESS);
+            ValidateConstants validate = hospitalService.validate(hospital);
+            if (Boolean.TRUE.equals(validate.getFlag())){
+                hospitalService.insert(hospital);
+                return Result.of(true,SysConstants.INSERT_SUCCESS);
+            }
+            return Result.of(false,validate.getMessage());
         }catch (Exception e){
             log.error(e.getMessage(),e);
             return Result.of(false,SysConstants.INSERT_FAIL);
@@ -68,14 +86,20 @@ public class HospitalController {
     @RequestMapping("/update")
     public Result update(@RequestBody Hospital hospital){
         try {
-            LambdaUpdateWrapper<Hospital> wrapper = Wrappers.lambdaUpdate();
-            wrapper.set(Hospital::getHospitalName,hospital.getHospitalName())
-                    .set(Hospital::getAddress,hospital.getAddress())
-                    .set(Hospital::getTelephoneNumber,hospital.getTelephoneNumber())
-                    .eq(Hospital::getId,hospital.getId());
-            hospitalService.update(wrapper);
-            return Result.of(true,SysConstants.UPDATE_SUCCESS);
-        }catch (Exception e){
+            ValidateConstants validate = hospitalService.validate(hospital);
+            if (Boolean.TRUE.equals(validate.getFlag())){
+                LambdaUpdateWrapper<Hospital> wrapper = Wrappers.lambdaUpdate();
+                wrapper.set(Hospital::getHospitalName,hospital.getHospitalName())
+                        .set(Hospital::getAddress,hospital.getAddress())
+                        .set(Hospital::getTelephoneNumber,hospital.getTelephoneNumber())
+                        .set(Hospital::getUpdateTime, LocalDateTime.now())
+                        .eq(Hospital::getId,hospital.getId());
+                hospitalService.update(wrapper);
+                return Result.of(true,SysConstants.UPDATE_SUCCESS);
+            }
+            return Result.of(false,validate.getMessage());
+        }
+        catch (Exception e){
             log.error(e.getMessage(),e);
             return Result.of(false,SysConstants.UPDATE_FAIL);
         }

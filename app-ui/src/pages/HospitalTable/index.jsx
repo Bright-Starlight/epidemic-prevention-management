@@ -194,7 +194,7 @@ class HospitalTable extends React.Component {
         ];
         return <div>
             <h3><b>控制台首页</b></h3>
-            <div style={{float:"right"}}><CreateHospital refresh={this.onChange}/></div>
+            <div style={{float:"right"}}><CreateHospital refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"
                    pagination={{defaultPageSize:5,

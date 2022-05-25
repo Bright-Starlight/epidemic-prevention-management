@@ -15,4 +15,6 @@ public class SysConstants {
     public static final String UPDATE_FAIL = "修改失败";
     public static final String DELETE_SUCCESS = "删除成功";
     public static final String DELETE_FAIL = "删除失败";
+
+
 }

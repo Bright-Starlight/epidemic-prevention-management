@@ -15,7 +15,6 @@ function DeleteHospital (props) {
         setIsModalVisible(false);
     };
     const deleteData = () => {
-        console.log(id)
         axios.get("http://localhost:3000/hospital/delete",{
             params:{
                 id:id

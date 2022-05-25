@@ -4,6 +4,12 @@ import React, {Component} from 'react';
 import HospitalTable from "../HospitalTable";
 import {Link, Route, Switch, withRouter} from "react-router-dom";
 import IntimateTable from "../IntimateTable";
+import IsolationTable from "../IsolationTable";
+import IsolationComplete from "../IsolationCompleteTable";
+import ConfirmTable from "../ConfirmTable";
+import NewConfirmTable from "../NewConfirmTable";
+import CureTable from "../CureTable";
+import NewCureTable from "../../NewCureTable";
 
 
 const {Header, Content, Sider} = Layout;
@@ -35,7 +41,7 @@ const list = [
     },
     {
         icon: <IconFont style={{fontSize: "40px"}} type="icon-jiuhuche"/>,
-        children: [{title: "新增确诊", key: "newConfirm",url: "/newConfirm"}, {title: "确诊列表", key: "confirm",url: "/Confirm"}],
+        children: [{title: "新增确诊", key: "newConfirm",url: "/newConfirm"}, {title: "确诊列表", key: "confirm",url: "/confirm"}],
         key: 4
     },
     {
@@ -115,6 +121,12 @@ class Main extends Component{
                                 <Switch>
                                     <Route path="/intimate" component={IntimateTable}/>
                                     <Route path="/hospital" component={HospitalTable}/>
+                                    <Route path="/inIsolation" component={IsolationTable}/>
+                                    <Route path="/isolationFinish" component={IsolationComplete}/>
+                                    <Route path="/confirm" component={ConfirmTable}/>
+                                    <Route path="/newConfirm" component={NewConfirmTable}/>
+                                    <Route path="/cure" component={CureTable}/>
+                                    <Route path="/newCure" component={NewCureTable}/>
                                 </Switch>
                             </div>
                         </Content>

@@ -40,9 +40,8 @@
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
+    "moment": "^2.29.3",
     "react-highlight-words": "^0.18.0"
   },
-  "proxy":
-    "http://127.0.0.1:8080"
-
+  "proxy": "http://127.0.0.1:8080"
 }

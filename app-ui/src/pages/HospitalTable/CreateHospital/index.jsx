@@ -2,21 +2,20 @@ import React, {useState} from 'react';
 import {Button, Form, Input, message, Modal} from 'antd';
 import axios from "axios";
 
-const CollectionCreateForm = ({visible, onCreate, onCancel}) => {
+function CollectionCreateForm ({visible, onCreate, onCancel})  {
 
     const [form] = Form.useForm();
     return (
         <Modal
             visible={visible}
             title="添加医院信息"
-            okText="Create"
-            cancelText="Cancel"
+            okText="添加"
+            cancelText="取消"
             onCancel={onCancel}
             onOk={() => {
                 form
                     .validateFields()
                     .then((values) => {
-                        form.resetFields();
                         onCreate(values);
                     })
                     .catch((info) => {
@@ -73,19 +72,22 @@ const CollectionCreateForm = ({visible, onCreate, onCancel}) => {
     );
 };
 
-const CreateHospital = (props) => {
+function CreateHospital(props)  {
     const [visible, setVisible] = useState(false);
     const refresh = props.refresh
     const onCreate = (values) => {
         axios.post("http://localhost:3000/hospital/insert",values).then(res=>{
             if (res.data.flag === true){
                 message.success(res.data.message)
+                setVisible(false);
+                console.log(refresh)
                 refresh()
             }else {
                 message.error(res.data.message)
             }
+
         })
-        setVisible(false);
+
     };
 
     return (
@@ -109,4 +111,4 @@ const CreateHospital = (props) => {
     );
 };
 
-export default () => <CreateHospital/>;
+export default CreateHospital;

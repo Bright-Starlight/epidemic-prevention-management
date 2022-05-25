@@ -49,7 +49,7 @@ public class CreateDataUtils {
     @Test
     public  void createDataPerson() throws Exception {
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 2; i++) {
             Carrier carrier = new Carrier();
             String chineseName = NameRandom.getChineseName();
             String[] split = chineseName.split(":");

@@ -4,14 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/lib/locale/zh_CN';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+    <ConfigProvider locale={zhCN}>
     <React.StrictMode>
     <BrowserRouter>
                 <App/>
     </BrowserRouter>
     </React.StrictMode>
+    </ConfigProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

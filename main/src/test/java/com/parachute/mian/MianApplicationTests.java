@@ -20,10 +20,13 @@ class MianApplicationTests {
 
     @Test
     void contextLoads() {
-        for (int i = 0; i < 10; i++) {
 
+        System.out.println(new Date());
 
-        }
+        System.out.println(DateUtils.date2String(new Date()));
+        String s = DateUtils.date2String(new Date());
+        String[] s1 = s.split(" ");
+        System.out.println(s1[0]);
 
     }
 

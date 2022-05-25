@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button,message } from 'antd';
 import axios from "axios";
 
-function DeleteHospital (props) {
+function UpdateState (props) {
     const refresh = props.refresh
     const [isModalVisible, setIsModalVisible] = useState(false);
     const {id} = props
@@ -11,12 +11,12 @@ function DeleteHospital (props) {
     };
 
     const handleOk = () => {
-        deleteData()
+        updateState()
         setIsModalVisible(false);
     };
-    const deleteData = () => {
+    const updateState = () => {
         console.log(id)
-        axios.get("http://localhost:3000/hospital/delete",{
+        axios.get("http://localhost:3000/carrier/updateToCure",{
             params:{
                 id:id
             }}).then(res=>{
@@ -36,13 +36,13 @@ function DeleteHospital (props) {
     return (
         <>
             <Button type="primary" onClick={showModal} danger>
-                删除
+                已治愈
             </Button>
             <Modal title="警告！！！" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-               是否删除
+               是否设为已治愈
             </Modal>
         </>
     );
 };
 
-export default DeleteHospital;
+export default UpdateState;
