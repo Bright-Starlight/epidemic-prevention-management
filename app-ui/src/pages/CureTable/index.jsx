@@ -4,7 +4,7 @@ import {SearchOutlined} from '@ant-design/icons';
 import React from 'react';
 import CreateCure from './CreateCure/index'
 import UpdateCure from "./UpdateCure/index";
-import axios from "axios";
+import {API} from "../../api";
 import DeleteCure from "./DeleteCure/index";
 
 
@@ -16,7 +16,7 @@ class CureTable extends React.Component {
    componentDidMount() {
        this.page = 1
        this.pageSize = 5
-       axios.get("http://localhost:3000/carrier/getCure",{params:{
+       API.get("http://localhost:3000/carrier/getCure",{params:{
            page:1,
                pageSize:5
            }}).then(
@@ -43,7 +43,7 @@ class CureTable extends React.Component {
    onChange = (page,pageSize)=>{
        this.page = page
        this.pageSize = pageSize
-       axios.get("http://localhost:3000/carrier/getCure",{params:{
+       API.get("http://localhost:3000/carrier/getCure",{params:{
                page:page,
                pageSize:pageSize
            }}).then(
@@ -216,7 +216,7 @@ class CureTable extends React.Component {
             },
         ];
         return <div>
-            <h3><b>控制台首页</b></h3>
+            <h3><b>治愈详情</b></h3>
             <div style={{float:"right"}}><CreateCure refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"

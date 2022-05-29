@@ -1,7 +1,11 @@
 package com.parachute.main.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.parachute.main.entity.Permission;
 import com.parachute.main.entity.User;
+
+
+import java.util.List;
 
 /**
  * (User)表服务接口
@@ -11,5 +15,15 @@ import com.parachute.main.entity.User;
  */
 public interface UserService extends IService<User> {
 
+    /**
+     * 注册
+     *
+     * @param user 用户
+     */
+    void register(User user);
+
+    List<Permission> getPermission(String primaryPrincipal);
+
+    List<User> getUser();
 }
 

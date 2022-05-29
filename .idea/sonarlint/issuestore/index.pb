@@ -21,8 +21,6 @@ F.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml,1\a\1a8
 app-ui/README.md,d\7\d78ae0383f8211670d5d85d88e53f93c8dbc84a6
 L
 .idea/mybatisx/templates.xml,7\a\7a8e46cfbd72943a56408813f04fd21d4a0ad1f6
-C
-app-ui/package.json,d\7\d707f70d7a131eab3555b1d557ed3d1cb7a075e4
 A
 app-ui/.gitignore,2\b\2b5e9baf91410bf6245e434d75259fe66ba6ba19
 }
@@ -35,12 +33,8 @@ D
 app-ui/src/index.css,f\1\f13b06e2ec9f214856927e390e55759b03641f8e
 F
 app-ui/src/App.test.js,e\b\eb6f96c9849832903b0d4d004df194f2882dcf9c
-A
-app-ui/src/App.js,a\5\a50af4e42a10c37ca2eb05b1f1fd048551df5465
 B
 app-ui/src/App.css,7\2\72f1d0db4f14f184a5f4cc5db42e3317235cead5
-@
-app-ui/yarn.lock,b\1\b17638eaa8d3294e54609d0e33d54211c8ae9bb4
 K
 app-ui/public/manifest.json,c\0\c0c1344ab0f44bee347610a39db64a0143a0afa8
 H
@@ -217,3 +211,5 @@ i
 9.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_0.xml,8\4\84f2ecf757628dc157db06b2c9aa0786a852e4b8
 b
 2.idea/libraries/Maven__org_yaml_snakeyaml_1_30.xml,3\c\3c9053362206afff74805f76190a4db80d948973
+;
+gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3

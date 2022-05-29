@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button,message } from 'antd';
-import axios from "axios";
+import {API} from "../../../api";
 
 function UpdateToDie (props) {
     const refresh = props.refresh
@@ -16,7 +16,7 @@ function UpdateToDie (props) {
     };
     const updateState = () => {
         console.log(id)
-        axios.get("http://localhost:3000/carrier/updateToDie",{
+        API.get("http://localhost:3000/carrier/updateToDie",{
             params:{
                 id:id
             }}).then(res=>{

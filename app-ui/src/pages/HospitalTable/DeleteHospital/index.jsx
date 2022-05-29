@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button,message } from 'antd';
-import axios from "axios";
+import {API} from "../../../api";
 
 function DeleteHospital (props) {
     const refresh = props.refresh
@@ -15,7 +15,7 @@ function DeleteHospital (props) {
         setIsModalVisible(false);
     };
     const deleteData = () => {
-        axios.get("http://localhost:3000/hospital/delete",{
+        API.get("http://localhost:3000/hospital/delete",{
             params:{
                 id:id
             }}).then(res=>{

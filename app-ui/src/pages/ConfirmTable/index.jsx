@@ -4,7 +4,7 @@ import {SearchOutlined} from '@ant-design/icons';
 import React from 'react';
 import CreateConfirm from './CreateConfirm/index'
 import UpdateConfirm from "./UpdateConfirm/index";
-import axios from "axios";
+import {API} from "../../api";
 import DeleteConfirm from "./DeleteConfirm/index";
 import UpdateState from './UpdateState/index'
 import UpdateToDie from "./UpdateToDie";
@@ -17,7 +17,7 @@ class ConfirmTable extends React.Component {
    componentDidMount() {
        this.page = 1
        this.pageSize = 5
-       axios.get("http://localhost:3000/carrier/getConfirm",{params:{
+       API.get("http://localhost:3000/carrier/getConfirm",{params:{
            page:1,
                pageSize:5
            }}).then(
@@ -44,7 +44,7 @@ class ConfirmTable extends React.Component {
    onChange = (page,pageSize)=>{
        this.page = page
        this.pageSize = pageSize
-       axios.get("http://localhost:3000/carrier/getConfirm",{params:{
+       API.get("http://localhost:3000/carrier/getConfirm",{params:{
                page:page,
                pageSize:pageSize
            }}).then(
@@ -228,7 +228,7 @@ class ConfirmTable extends React.Component {
             },
         ];
         return <div>
-            <h3><b>控制台首页</b></h3>
+            <h3><b>确诊详情</b></h3>
             <div style={{float:"right"}}><CreateConfirm refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"

@@ -10,6 +10,7 @@ import com.parachute.main.entity.Carrier;
 import com.parachute.main.service.CarrierService;
 import com.parachute.main.utils.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,7 @@ public class IntimateController {
 
     @Autowired
     CarrierService carrierService;
-
+    @RequiresPermissions("user:create")
     @RequestMapping("/insert")
     public Result insert(@RequestBody Carrier carrier){
         try {
@@ -48,6 +49,7 @@ public class IntimateController {
     }
 
 
+    @RequiresPermissions("user:query")
     @RequestMapping("/getNewIntimate")
     public Result getNewIntimate(Integer page, Integer pageSize){
         try {
@@ -61,6 +63,13 @@ public class IntimateController {
         }
     }
 
+    /**
+     * 将病人状态改为隔离
+     *
+     * @param id id
+     * @return {@link Result}
+     */
+    @RequiresPermissions("user:update")
     @RequestMapping("updateToInIsolation")
     public Result updateToInIsolation(Integer id){
         try {

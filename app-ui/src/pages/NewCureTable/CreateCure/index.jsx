@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, DatePicker, Form, Input, message, Modal,Select} from 'antd';
-import axios from "axios";
+
+import {API} from "../../../api";
 
 const { Option } = Select;
 
@@ -186,7 +187,7 @@ function CreateCure  (props)  {
     const refresh = props.refresh
     const [data, setData] = useState([]);
     const onCreate = (values) => {
-        axios.post("http://localhost:3000/carrier/insertCure", values).then(res => {
+        API.post("http://localhost:3000/carrier/insertCure", values).then(res => {
             if (res.data.flag === true) {
                 message.success(res.data.message)
                 refresh()
@@ -203,7 +204,7 @@ function CreateCure  (props)  {
             <Button
                 type="primary"
                 onClick={() => {
-                    axios.get("http://localhost:3000/hospital/getAll").then(res=>{
+                    API.get("http://localhost:3000/hospital/getAll").then(res=>{
                         if (res.data.flag === true){
                             setData(res.data.data)
 

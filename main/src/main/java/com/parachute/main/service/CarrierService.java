@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.parachute.main.constant.ValidateConstants;
 import com.parachute.main.entity.Carrier;
 import com.parachute.main.entity.Hospital;
+import com.parachute.main.entity.ReportVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Carrier)表服务接口
@@ -16,9 +18,9 @@ import java.util.List;
 public interface CarrierService extends IService<Carrier> {
 
     /**
-     * 插入
+     * 新增病人
      *
-     * @param carrier 航空公司
+     * @param carrier 病人
      */
     void insert(Carrier carrier);
 
@@ -32,45 +34,45 @@ public interface CarrierService extends IService<Carrier> {
     /**
      * 验证
      *
-     * @param carrier 航空公司
+     * @param carrier 病人
      * @return boolean
      */
     ValidateConstants validate(Carrier carrier);
 
 
     /**
-     * 得到医院
+     * 获取医院信息
      *
-     * @param fromHospital 从医院
+     * @param fromHospital 所在医院
      * @return {@link Hospital}
      */
     Integer getHospital(String fromHospital);
 
     /**
-     * 在隔离
+     * 获取隔离信息
      *
      * @return {@link List}<{@link Carrier}>
      */
     List<Carrier> getInIsolation();
 
     /**
-     * 插入隔离
+     * 添加隔离
      *
-     * @param carrier 航空公司
+     * @param carrier 病人
      */
     void insertIsolation(Carrier carrier);
 
     /**
-     * 在隔离完成
+     * 获取隔离完成信息
      *
      * @return {@link List}<{@link Carrier}>
      */
     List<Carrier> getInIsolationComplete();
 
     /**
-     * 插入隔离完成
+     * 添加隔离完成
      *
-     * @param carrier 航空公司
+     * @param carrier 病人
      */
     void insertIsolationComplete(Carrier carrier);
 
@@ -84,19 +86,19 @@ public interface CarrierService extends IService<Carrier> {
     /**
      * 插入确诊名单
      *
-     * @param carrier 航空公司
+     * @param carrier 病人
      */
     void insertConfirm(Carrier carrier);
 
     /**
-     * 插入治疗
+     * 添加治疗
      *
-     * @param carrier 航空公司
+     * @param carrier 病人
      */
     void insertCure(Carrier carrier);
 
     /**
-     * 获得新确认
+     * 获得新增确诊
      *
      * @return {@link List}<{@link Carrier}>
      */
@@ -111,26 +113,45 @@ public interface CarrierService extends IService<Carrier> {
 
 
     /**
-     * 获得新治疗
+     * 获得新增治愈
      *
      * @return {@link List}<{@link Carrier}>
      */
     List<Carrier> getNewCure();
 
     /**
-     * 会死
+     * 获取遇难信息
      *
      * @return {@link List}<{@link Carrier}>
      */
     List<Carrier> getDie();
 
     /**
-     * 插入模
+     * 添加遇难
      *
-     * @param carrier 航空公司
+     * @param carrier 病人
      */
     void insertDie(Carrier carrier);
 
+    /**
+     * 获得新增遇难
+     *
+     * @return {@link List}<{@link Carrier}>
+     */
     List<Carrier> getNewDie();
+
+    /**
+     * 得到累计报告
+     *
+     * @return {@link List}<{@link ReportVO}>
+     */
+    List<ReportVO> getReport();
+
+    /**
+     * 得到新增报告
+     *
+     * @return {@link List}<{@link ReportVO}>
+     */
+    List<ReportVO> getNewReport();
 }
 

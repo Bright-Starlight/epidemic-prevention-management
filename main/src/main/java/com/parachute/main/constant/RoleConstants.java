@@ -7,7 +7,7 @@ package com.parachute.main.constant;
  * @date 2022/05/21
  */
 public class RoleConstants {
-    private RoleConstants(){};
+    private RoleConstants(){}
 
     public static final String ADMIN = "管理员";
 }

@@ -4,7 +4,8 @@ import {SearchOutlined} from '@ant-design/icons';
 import React from 'react';
 import CreateIsolation from './CreateIsolation/index'
 import UpdateIsolation from "./UpdateIsolation/index";
-import axios from "axios";
+
+import {API} from "../../api";
 import DeleteIsolation from "./DeleteIsolation/index";
 import UpdateState from './UpdateState/index'
 import UpdateToCure from "./UpdateToConfirm";
@@ -17,7 +18,7 @@ class IsolationTable extends React.Component {
    componentDidMount() {
        this.page = 1
        this.pageSize = 5
-       axios.get("http://localhost:3000/carrier/getInIsolation",{params:{
+       API.get("http://localhost:3000/carrier/getInIsolation",{params:{
            page:1,
                pageSize:5
            }}).then(
@@ -44,7 +45,7 @@ class IsolationTable extends React.Component {
    onChange = (page,pageSize)=>{
        this.page = page
        this.pageSize = pageSize
-       axios.get("http://localhost:3000/carrier/getInIsolation",{params:{
+       API.get("http://localhost:3000/carrier/getInIsolation",{params:{
                page:page,
                pageSize:pageSize
            }}).then(
@@ -228,7 +229,7 @@ class IsolationTable extends React.Component {
             },
         ];
         return <div>
-            <h3><b>控制台首页</b></h3>
+            <h3><b>正在隔离详情</b></h3>
             <div style={{float:"right"}}><CreateIsolation refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"

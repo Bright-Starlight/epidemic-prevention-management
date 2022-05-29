@@ -1,4 +1,4 @@
-import {Layout, Menu} from 'antd';
+import {Button, Layout, Menu} from 'antd';
 import {createFromIconfontCN} from '@ant-design/icons';
 import React, {Component} from 'react';
 import HospitalTable from "../HospitalTable";
@@ -12,6 +12,9 @@ import CureTable from "../CureTable";
 import NewCureTable from "../NewCureTable";
 import DieTable from "../DieTable";
 import NewDieTable from "../NewDieTable";
+import UserTable from "../UserTable";
+import Report from "../Report";
+import NewBrokenLine from "../Report/NewBrokenLine";
 
 
 const {Header, Content, Sider} = Layout;
@@ -23,42 +26,42 @@ const IconFont = createFromIconfontCN({
 const list = [
     {
         icon: <IconFont style={{fontSize: "40px"}} type="icon-xgyq"/>,
-        children: [{title: "数据详情", key: "report", url: '/report'}],
+        children: [{title: "新增", key: "newReport", url: '/main/newReport'},{title: "累计", key: "report", url: '/main/report'}],
         key: 1
     },
     {
         icon: <IconFont style={{fontSize: "40px"}} type="icon-yiyuan"/>,
-        children: [{title: "医院管理", key: "hospital", url: '/hospital'}],
+        children: [{title: "医院管理", key: "hospital", url: '/main/hospital'}],
         key: 2
     },
     {
         icon: <IconFont style={{fontSize: "40px"}} type="icon-shenqingjilu"/>,
-        children: [{title: "新增密接", key: "intimate", url: '/intimate'},
+        children: [{title: "新增密接", key: "intimate", url: '/main/intimate'},
             {
             title: "正在隔离",
             key: "inIsolation",
-            url: "/inIsolation"
-        }, {title: "隔离完成", key: "isolationFinish",url: "/isolationFinish"}],
+            url: "/main/inIsolation"
+        }, {title: "隔离完成", key: "isolationFinish",url: "/main/isolationFinish"}],
         key: 3
     },
     {
         icon: <IconFont style={{fontSize: "40px"}} type="icon-jiuhuche"/>,
-        children: [{title: "新增确诊", key: "newConfirm",url: "/newConfirm"}, {title: "确诊列表", key: "confirm",url: "/confirm"}],
+        children: [{title: "新增确诊", key: "newConfirm",url: "/main/newConfirm"}, {title: "确诊列表", key: "confirm",url: "/main/confirm"}],
         key: 4
     },
     {
         icon: <IconFont style={{fontSize: "40px"}} type="icon-jijiubao"/>,
-        children: [{title: "新增自愈", key: "die",url: "/newCure"},{title: "自愈列表", key: "cure",url: "/cure"}],
+        children: [{title: "新增自愈", key: "die",url: "/main/newCure"},{title: "自愈列表", key: "cure",url: "/main/cure"}],
         key: 5
     },
     {
         icon: <IconFont style={{fontSize: "40px"}} type="icon-aixin"/>,
-        children: [{title: "新增遇难", key: "newDie",url: "/newDie"},{title: "遇难列表", key: "die",url: "/die"}],
+        children: [{title: "新增遇难", key: "newDie",url: "/main/newDie"},{title: "遇难列表", key: "die",url: "/main/die"}],
         key: 6
     },
     {
         icon: <IconFont style={{fontSize: "40px"}} type="icon-yonghu"/>,
-        children: [{title: "医务人员列表", key: "user", url: '/user'}],
+        children: [{title: "医务人员列表", key: "user", url: '/main/user'}],
         key: 7
     },
 ]
@@ -76,8 +79,7 @@ const titles = [
 class Main extends Component{
 
     componentDidMount() {
-        const history = this.props.history
-        history.push("/report")
+        this.props.history.push("/main/NewReport")
     }
 
     render() {
@@ -117,20 +119,25 @@ class Main extends Component{
                     </Sider>
                     <Layout>
                         <Header className="site-layout-sub-header-background"
-                                style={{padding: 0, backgroundColor: "white"}}/>
+                                style={{padding: 0, backgroundColor: "white"}}>
+                            <Button onClick={()=>{ this.props.history.push("/")} }type="primary">退出登录</Button>
+                        </Header>
                         <Content>
                             <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
                                 <Switch>
-                                    <Route path="/intimate" component={IntimateTable}/>
-                                    <Route path="/hospital" component={HospitalTable}/>
-                                    <Route path="/inIsolation" component={IsolationTable}/>
-                                    <Route path="/isolationFinish" component={IsolationComplete}/>
-                                    <Route path="/confirm" component={ConfirmTable}/>
-                                    <Route path="/newConfirm" component={NewConfirmTable}/>
-                                    <Route path="/cure" component={CureTable}/>
-                                    <Route path="/newCure" component={NewCureTable}/>
-                                    <Route path="/die" component={DieTable}/>
-                                    <Route path="/newDie" component={NewDieTable}/>
+                                    <Route path="/main/report" component={Report}/>
+                                    <Route path="/main/NewReport" component={NewBrokenLine}/>
+                                    <Route path="/main/intimate" component={IntimateTable}/>
+                                    <Route path="/main/hospital" component={HospitalTable}/>
+                                    <Route path="/main/inIsolation" component={IsolationTable}/>
+                                    <Route path="/main/isolationFinish" component={IsolationComplete}/>
+                                    <Route path="/main/confirm" component={ConfirmTable}/>
+                                    <Route path="/main/newConfirm" component={NewConfirmTable}/>
+                                    <Route path="/main/cure" component={CureTable}/>
+                                    <Route path="/main/newCure" component={NewCureTable}/>
+                                    <Route path="/main/die" component={DieTable}/>
+                                    <Route path="/main/newDie" component={NewDieTable}/>
+                                    <Route path="/main/user" component={UserTable}/>
                                 </Switch>
                             </div>
                         </Content>

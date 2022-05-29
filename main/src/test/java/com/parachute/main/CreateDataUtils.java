@@ -30,6 +30,11 @@ public class CreateDataUtils {
         return (char) (0x4e00 + ran.nextInt(delta));
     }
 
+    /**
+     * 创建数据  医院
+     *
+     * @throws Exception 异常
+     */
     @Test
     public  void createDataHospital() throws Exception {
         for (int i = 0; i < 50; i++) {
@@ -46,6 +51,12 @@ public class CreateDataUtils {
             hospitalService.insert(hospital);
         }
     }
+
+    /**
+     * 创建数据 人
+     *
+     * @throws Exception 异常
+     */
     @Test
     public  void createDataPerson() throws Exception {
 

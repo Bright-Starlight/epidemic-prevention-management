@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Form, Input, message, Modal} from 'antd';
-import axios from "axios";
+
+import {API} from "../../../api";
 
 function CollectionCreateForm ({visible, onCreate, onCancel})  {
 
@@ -76,7 +77,7 @@ function CreateHospital(props)  {
     const [visible, setVisible] = useState(false);
     const refresh = props.refresh
     const onCreate = (values) => {
-        axios.post("http://localhost:3000/hospital/insert",values).then(res=>{
+        API.post("http://localhost:3000/hospital/insert",values).then(res=>{
             if (res.data.flag === true){
                 message.success(res.data.message)
                 setVisible(false);

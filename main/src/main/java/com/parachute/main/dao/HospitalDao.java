@@ -3,8 +3,6 @@ package com.parachute.main.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.parachute.main.entity.Hospital;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
-
 /**
  * (Hospital)表数据库访问层
  *

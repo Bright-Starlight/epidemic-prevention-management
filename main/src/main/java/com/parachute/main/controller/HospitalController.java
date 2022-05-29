@@ -2,14 +2,9 @@ package com.parachute.main.controller;
 
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.api.ApiController;
-import com.baomidou.mybatisplus.extension.api.R;
-import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.page.PageMethod;
 import com.parachute.main.constant.SysConstants;
@@ -18,6 +13,7 @@ import com.parachute.main.entity.Hospital;
 import com.parachute.main.service.HospitalService;
 import com.parachute.main.utils.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -41,7 +37,7 @@ public class HospitalController {
     @Resource
     private HospitalService hospitalService;
 
-
+    @RequiresPermissions("user:query")
     @RequestMapping("/getAll")
     public Result getAll(){
         try {
@@ -52,7 +48,7 @@ public class HospitalController {
             return Result.of(false,SysConstants.SERVER_EXCEPTION);
         }
     }
-
+    @RequiresPermissions("user:query")
     @RequestMapping("/getData")
     public Result getData(Integer  page,Integer  pageSize){
         try {
@@ -66,7 +62,7 @@ public class HospitalController {
         }
     }
 
-
+    @RequiresPermissions("user:create")
     @RequestMapping("/insert")
     public Result insert(@RequestBody Hospital hospital){
         try {
@@ -82,7 +78,7 @@ public class HospitalController {
         }
     }
 
-
+    @RequiresPermissions("user:update")
     @RequestMapping("/update")
     public Result update(@RequestBody Hospital hospital){
         try {
@@ -105,6 +101,7 @@ public class HospitalController {
         }
     }
 
+    @RequiresPermissions("user:delete")
     @RequestMapping("/delete")
     public Result delete(Integer id){
         try {

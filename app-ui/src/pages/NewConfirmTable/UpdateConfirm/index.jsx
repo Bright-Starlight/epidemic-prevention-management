@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, DatePicker, Form, Input, message, Modal, Select} from 'antd';
-import axios from "axios";
+
+import {API} from "../../../api";
 import moment from 'moment';
 
 const { Option } = Select;
@@ -195,7 +196,7 @@ function UpdateConfirm(props) {
 
     const onCreate = (values) => {
         values = {id: data.id, ...values}
-        axios.post("http://localhost:3000/carrier/update", values).then(res => {
+        API.post("http://localhost:3000/carrier/update", values).then(res => {
             if (res.data.flag === true) {
                 message.success(res.data.message)
                 setVisible(false);
@@ -211,7 +212,7 @@ function UpdateConfirm(props) {
             <Button
                 type="primary"
                 onClick={() =>  {
-                    axios.get("http://localhost:3000/hospital/getAll").then(res=>{
+                    API.get("http://localhost:3000/hospital/getAll").then(res=>{
                         if (res.data.flag === true){
                             setList(res.data.data)
                         }else {

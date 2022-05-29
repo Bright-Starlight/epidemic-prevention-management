@@ -23,7 +23,7 @@ public interface HospitalService extends IService<Hospital> {
     List<Hospital> getPage();
 
     /**
-     * 插入
+     * 添加
      *
      * @param hospital 医院
      */
@@ -37,6 +37,11 @@ public interface HospitalService extends IService<Hospital> {
      */
     ValidateConstants validate(Hospital hospital);
 
+    /**
+     * 得到所有数据
+     *
+     * @return {@link List}<{@link HashMap}<{@link String}, {@link String}>>
+     */
     List<HashMap<String, String>> getAll();
 }
 

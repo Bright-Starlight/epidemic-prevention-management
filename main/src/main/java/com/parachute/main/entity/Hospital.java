@@ -17,23 +17,43 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 @TableName("hospital")
 public class Hospital extends Model<Hospital> {
-    //id
+
+    /**
+     * id
+     */
     private Integer id;
+    /**
+     * 键
+     */
     @TableField(exist = false)
     private Integer key;
-    //医院名称
+    /**
+     * 医院名字
+     */
     private String hospitalName;
-    //医院地址
+    /**
+     * 医院地址
+     */
     private String address;
-    //联系方式
+    /**
+     * 电话号码
+     */
     private String telephoneNumber;
-    //创建时间
+    /**
+     * 创建时间
+     */
     private LocalDateTime createTime;
-    //修改时间
+    /**
+     * 更新时间
+     */
     private LocalDateTime updateTime;
-    //修改人
+    /**
+     * 修改人
+     */
     private String updateName;
-    //是否删除 1 为删除
+    /**
+     * 是否删除 1 为删除
+     */
     @TableLogic
     private String isDelete;
 

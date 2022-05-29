@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button,message } from 'antd';
-import axios from "axios";
+
+import {API} from "../../../api";
 
 function UpdateState (props) {
     const refresh = props.refresh
@@ -16,7 +17,7 @@ function UpdateState (props) {
     };
     const updateState = () => {
         console.log(id)
-        axios.get("http://localhost:3000/carrier/updateToInIsolationComplete",{
+        API.get("http://localhost:3000/carrier/updateToInIsolationComplete",{
             params:{
                 id:id
             }}).then(res=>{

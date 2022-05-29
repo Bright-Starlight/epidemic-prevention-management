@@ -10,6 +10,7 @@ import com.parachute.main.entity.Carrier;
 import com.parachute.main.service.CarrierService;
 import com.parachute.main.utils.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,7 @@ public class IsolationController {
     CarrierService carrierService;
 
 
+    @RequiresPermissions("user:create")
     @RequestMapping("/insertIsolation")
     public Result insertIsolation(@RequestBody Carrier carrier){
         try {
@@ -48,6 +50,7 @@ public class IsolationController {
         }
     }
 
+    @RequiresPermissions("user:create")
     @RequestMapping("/insertIsolationComplete")
     public Result insertIsolationComplete(@RequestBody Carrier carrier){
         try {
@@ -63,6 +66,13 @@ public class IsolationController {
         }
     }
 
+    /**
+     * 将病人状态改为隔离完成
+     *
+     * @param id id
+     * @return {@link Result}
+     */
+    @RequiresPermissions("user:update")
     @RequestMapping("updateToInIsolationComplete")
     public Result updateToInIsolationComplete(Integer id){
         try {
@@ -78,6 +88,13 @@ public class IsolationController {
         }
     }
 
+    /**
+     * 更将病人状态改为确诊
+     *
+     * @param id id
+     * @return {@link Result}
+     */
+    @RequiresPermissions("user:update")
     @RequestMapping("updateToConfirm")
     public Result updateToConfirm(Integer id){
         try {
@@ -93,6 +110,14 @@ public class IsolationController {
             return Result.of(false,SysConstants.UPDATE_FAIL);
         }
     }
+
+    /**
+     * 将病人状态改为遇难
+     *
+     * @param id id
+     * @return {@link Result}
+     */
+    @RequiresPermissions("user:update")
     @RequestMapping("updateToDie")
     public Result updateToDie(Integer id){
         try {
@@ -110,6 +135,7 @@ public class IsolationController {
             return Result.of(false,SysConstants.UPDATE_FAIL);
         }
     }
+    @RequiresPermissions("user:query")
     @RequestMapping("getInIsolationComplete")
     public Result getInIsolationComplete(Integer page,Integer pageSize){
         try {
@@ -122,6 +148,7 @@ public class IsolationController {
             return Result.of(false,SysConstants.SERVER_EXCEPTION);
         }
     }
+    @RequiresPermissions("user:query")
     @RequestMapping("getInIsolation")
     public Result getInIsolation(Integer page,Integer pageSize){
         try {

@@ -4,7 +4,7 @@ import {SearchOutlined} from '@ant-design/icons';
 import React from 'react';
 import CreateIsolationComplete from './CreateIsolationComplete/index'
 import UpdateIsolationComplete from "./UpdateIsolationComplete/index";
-import axios from "axios";
+import {API} from "../../api";
 import DeleteIsolationComplete from "./DeleteIsolationComplete/index";
 
 
@@ -16,7 +16,7 @@ class IsolationComplete extends React.Component {
    componentDidMount() {
        this.page = 1
        this.pageSize = 5
-       axios.get("http://localhost:3000/carrier/getInIsolationComplete",{params:{
+       API.get("http://localhost:3000/carrier/getInIsolationComplete",{params:{
            page:1,
                pageSize:5
            }}).then(
@@ -43,7 +43,7 @@ class IsolationComplete extends React.Component {
    onChange = (page,pageSize)=>{
        this.page = page
        this.pageSize = pageSize
-       axios.get("http://localhost:3000/carrier/getInIsolationComplete",{params:{
+       API.get("http://localhost:3000/carrier/getInIsolationComplete",{params:{
                page:page,
                pageSize:pageSize
            }}).then(
@@ -217,7 +217,7 @@ class IsolationComplete extends React.Component {
 
         ];
         return <div>
-            <h3><b>控制台首页</b></h3>
+            <h3><b>完成隔离详情</b></h3>
             <div style={{float:"right"}}><CreateIsolationComplete refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"

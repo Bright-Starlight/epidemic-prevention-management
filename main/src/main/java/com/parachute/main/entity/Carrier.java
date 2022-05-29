@@ -7,49 +7,87 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 
 /**
+ * 航空公司
  * (Carrier)表实体类
  *
  * @author makejava
+ * @date 2022/05/29
  * @since 2022-05-21 15:31:22
  */
 @SuppressWarnings("serial")
 public class Carrier extends Model<Carrier> {
-    //id
+    /**
+     * id
+     */
     private Integer id;
-    //姓名
+    /**
+     * 姓名
+     */
     private String name;
-    //身份证号码
+    /**
+     * 身份证号码
+     */
     private String identityCard;
-    //年龄
+    /**
+     * 年龄
+     */
     private Integer age;
-    //性别
+    /**
+     * 性别
+     */
     private String gender;
-    //家庭地址
+    /**
+     * 家庭住址
+     */
     private String homeAddress;
-    //电话号码
+    /**
+     * 电话号码
+     */
     private String telephoneNumber;
-    //接触原因
+    /**
+     * 接触原因
+     */
     private String cause;
-    //所在医院
+    /**
+     * 所在医院
+     */
     private String fromHospital;
-    //隔离时间
+    /**
+     * 隔离时间
+     */
     private LocalDateTime isolationTime;
-    //是否确诊 1 确诊
+    /**
+     * 是否确诊 1 确诊
+     */
     private String isConfirm;
-    //是否 治愈 1治愈
+    /**
+     * 是否 治愈 1治愈
+     */
     private String isCure;
-    //是否死亡  1死亡
+    /**
+     * 是否死亡  1死亡
+     */
     private String isDie;
-    //创建时间
+    /**
+     * 创建时间
+     */
     private LocalDateTime createTime;
-    //修改时间
+    /**
+     * 更新时间
+     */
     private LocalDateTime updateTime;
-    //修改人
+    /**
+     * 修改人
+     */
     private String updateName;
-    //是否删除 1删除
+    /**
+     * 是否删除 1删除
+     */
     @TableLogic
     private String isDelete;
-    //是否隔离
+    /**
+     * 是否隔离
+     */
     private String isIsolation;
 
     public String getIsIsolation() {

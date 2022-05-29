@@ -8,6 +8,7 @@ import com.parachute.main.entity.Carrier;
 import com.parachute.main.service.CarrierService;
 import com.parachute.main.utils.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ public class CureController {
     @Autowired
     CarrierService carrierService;
 
+    @RequiresPermissions("user:create")
     @RequestMapping("/insertCure")
     public Result insertCure(@RequestBody Carrier carrier){
         try {
@@ -43,6 +45,7 @@ public class CureController {
             return Result.of(false, SysConstants.INSERT_FAIL);
         }
     }
+    @RequiresPermissions("user:query")
     @RequestMapping("getNewCure")
     public Result getNewCure(Integer page,Integer pageSize){
         try {
@@ -55,6 +58,7 @@ public class CureController {
             return Result.of(false,SysConstants.SERVER_EXCEPTION);
         }
     }
+    @RequiresPermissions("user:query")
     @RequestMapping("getCure")
     public Result getCure(Integer page,Integer pageSize){
         try {

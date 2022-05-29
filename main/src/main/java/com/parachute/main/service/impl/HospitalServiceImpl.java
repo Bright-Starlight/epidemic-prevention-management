@@ -1,16 +1,14 @@
 package com.parachute.main.service.impl;
 
 
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.parachute.main.constant.RoleConstants;
 import com.parachute.main.constant.ValidateConstants;
 import com.parachute.main.dao.HospitalDao;
-import com.parachute.main.entity.Carrier;
 import com.parachute.main.entity.Hospital;
 import com.parachute.main.service.HospitalService;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -20,8 +20,8 @@ public class ValidateConstants {
     public static final String GENDER_ERROR = "性别错误";
     public static final Integer AGE_MAX = 130;
     public static final Integer AGE_MIN = 0;
+    public static final String USER_NAME_EXISTS = "用户名已存在";
 
-    private  ValidateConstants(){}
 
     private ValidateConstants(String message, Boolean flag) {
         this.message = message;

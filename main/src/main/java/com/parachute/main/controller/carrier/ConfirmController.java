@@ -10,6 +10,7 @@ import com.parachute.main.entity.Carrier;
 import com.parachute.main.service.CarrierService;
 import com.parachute.main.utils.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,7 @@ public class ConfirmController {
     @Autowired
     CarrierService carrierService;
 
+    @RequiresPermissions("user:create")
     @RequestMapping("/insertConfirm")
     public Result insertConfirm(@RequestBody Carrier carrier){
         try {
@@ -47,6 +49,13 @@ public class ConfirmController {
         }
     }
 
+    /**
+     * 将病人状态改为治愈
+     *
+     * @param id id
+     * @return {@link Result}
+     */
+    @RequiresPermissions("user:update")
     @RequestMapping("updateToCure")
     public Result updateToCure(Integer id){
         try {
@@ -62,6 +71,7 @@ public class ConfirmController {
             return Result.of(false,SysConstants.UPDATE_FAIL);
         }
     }
+    @RequiresPermissions("user:query")
     @RequestMapping("getConfirm")
     public Result getConfirm(Integer page,Integer pageSize){
         try {
@@ -74,6 +84,7 @@ public class ConfirmController {
             return Result.of(false,SysConstants.SERVER_EXCEPTION);
         }
     }
+    @RequiresPermissions("user:query")
     @RequestMapping("getNewConfirm")
     public Result getNewConfirm(Integer page,Integer pageSize){
         try {

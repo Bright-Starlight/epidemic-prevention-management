@@ -4,7 +4,8 @@ import {SearchOutlined} from '@ant-design/icons';
 import React from 'react';
 import CreateDie from './CreateDie/index'
 import UpdateDie from "./UpdateDie/index";
-import axios from "axios";
+
+import {API} from "../../api";
 import DeleteDie from "./DeleteDie/index";
 
 
@@ -16,7 +17,7 @@ class NewDieTable extends React.Component {
    componentDidMount() {
        this.page = 1
        this.pageSize = 5
-       axios.get("http://localhost:3000/carrier/getNewDie",{params:{
+       API.get("http://localhost:3000/carrier/getNewDie",{params:{
            page:1,
                pageSize:5
            }}).then(
@@ -43,7 +44,7 @@ class NewDieTable extends React.Component {
    onChange = (page,pageSize)=>{
        this.page = page
        this.pageSize = pageSize
-       axios.get("http://localhost:3000/carrier/getNewDie",{params:{
+       API.get("http://localhost:3000/carrier/getNewDie",{params:{
                page:page,
                pageSize:pageSize
            }}).then(
@@ -216,7 +217,7 @@ class NewDieTable extends React.Component {
             },
         ];
         return <div>
-            <h3><b>控制台首页</b></h3>
+            <h3><b>新增遇难详情</b></h3>
             <div style={{float:"right"}}><CreateDie refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"

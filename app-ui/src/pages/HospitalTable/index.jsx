@@ -4,7 +4,8 @@ import {SearchOutlined} from '@ant-design/icons';
 import React from 'react';
 import CreateHospital from './CreateHospital/index'
 import UpdateHospital from "./UpdateHospital/index";
-import axios from "axios";
+
+import {API} from "../../api";
 import DeleteHospital from "./DeleteHospital";
 
 
@@ -15,7 +16,7 @@ class HospitalTable extends React.Component {
    componentDidMount() {
        this.page = 1
        this.pageSize = 5
-       axios.get("http://localhost:3000/hospital/getData",{params:{
+       API.get("http://localhost:3000/hospital/getData",{params:{
            page:1,
                pageSize:5
            }}).then(
@@ -42,7 +43,7 @@ class HospitalTable extends React.Component {
    onChange = (page,pageSize)=>{
        this.page = page
        this.pageSize = pageSize
-       axios.get("http://localhost:3000/hospital/getData",{params:{
+       API.get("http://localhost:3000/hospital/getData",{params:{
                page:page,
                pageSize:pageSize
            }}).then(
@@ -193,7 +194,7 @@ class HospitalTable extends React.Component {
             },
         ];
         return <div>
-            <h3><b>控制台首页</b></h3>
+            <h3><b>医院详情</b></h3>
             <div style={{float:"right"}}><CreateHospital refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"

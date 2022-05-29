@@ -8,6 +8,7 @@ import com.parachute.main.entity.Carrier;
 import com.parachute.main.service.CarrierService;
 import com.parachute.main.utils.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ public class DieController {
     @Autowired
     CarrierService carrierService;
 
+    @RequiresPermissions("user:create")
     @RequestMapping("/insertDie")
     public Result insertDie(@RequestBody Carrier carrier){
         try {
@@ -44,7 +46,7 @@ public class DieController {
         }
     }
 
-
+    @RequiresPermissions("user:query")
     @RequestMapping("getDie")
     public Result getDie(Integer page, Integer pageSize){
         try {
@@ -57,7 +59,7 @@ public class DieController {
             return Result.of(false, SysConstants.SERVER_EXCEPTION);
         }
     }
-
+    @RequiresPermissions("user:query")
     @RequestMapping("getNewDie")
     public Result getNewDie(Integer page,Integer pageSize){
         try {

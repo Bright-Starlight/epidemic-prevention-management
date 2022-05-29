@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button,message } from 'antd';
-import axios from "axios";
+
+import {API} from "../../../api";
 
 function DeleteConfirm (props) {
     const refresh = props.refresh
@@ -16,7 +17,7 @@ function DeleteConfirm (props) {
     };
     const deleteData = () => {
         console.log(id)
-        axios.get("http://localhost:3000/carrier/delete",{
+        API.get("http://localhost:3000/carrier/delete",{
             params:{
                 id:id
             }}).then(res=>{

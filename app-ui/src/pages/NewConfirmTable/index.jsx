@@ -225,7 +225,7 @@ class NewConfirmTable extends React.Component {
             },
         ];
         return <div>
-            <h3><b>控制台首页</b></h3>
+            <h3><b>新增确诊详情</b></h3>
             <div style={{float:"right"}}><CreateConfirm refresh={()=>{this.onChange(this.page,this.pageSize)}}/></div>
             <Table columns={columns}
                    size="small"
