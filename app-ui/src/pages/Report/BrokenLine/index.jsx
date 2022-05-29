@@ -26,6 +26,7 @@ function BrokenLine  ()  {
         yField: 'value',
         seriesField: 'title',
         smooth:true,
+        autoFit:true,
         yAxis: {
             label: {
                 // 数值格式化为千分位

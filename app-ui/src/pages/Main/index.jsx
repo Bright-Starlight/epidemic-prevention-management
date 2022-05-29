@@ -97,7 +97,7 @@ class Main extends Component{
                            }}
                     >
                         <div className="logo">
-                            <img src={"/image/logo.png"} alt={"首页"}/>
+                            <img src={"/image/logo1.png"} alt={"首页"} style={{width:"200px",height:"80px"}}/>
                         </div>
                         <Menu
                             theme="light "

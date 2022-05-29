@@ -1,7 +1,8 @@
-import {Button,  Form, Input, message} from 'antd';
+import {Button, Form, Image, Input, message} from 'antd';
 import { withRouter} from "react-router-dom";
-
+import background from '../../image/background.jpg'
 import {API} from "../../api";
+import React from "react";
 
 
 function Login  (props){
@@ -23,7 +24,10 @@ function Login  (props){
     };
 
     return (
-        <div>
+
+        <div style={{width:"1100px", marginTop:""}}>
+
+            <img src={"/image/logo1.png"} style={{marginLeft:"260px"}} alt={"首页"}/>
         <Form
             name="basic"
             labelCol={{
@@ -32,7 +36,6 @@ function Login  (props){
             wrapperCol={{
                 span: 16,
             }}
-
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
