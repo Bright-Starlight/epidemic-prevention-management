@@ -1,6 +1,7 @@
 package com.parachute.main;
 
 import com.parachute.main.constant.RoleConstants;
+import com.parachute.main.dao.CarrierDao;
 import com.parachute.main.entity.Carrier;
 import com.parachute.main.entity.Hospital;
 import com.parachute.main.service.CarrierService;
@@ -13,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 import java.util.Random;
 @SpringBootTest
 public class CreateDataUtils {
@@ -23,6 +22,8 @@ public class CreateDataUtils {
     private HospitalService hospitalService;
     @Autowired
     private CarrierService carrierService;
+    @Autowired
+    private CarrierDao carrierDao;
 
     private static Random ran=new Random();
     private final static int delta=0x9fa5-0x4e00+1;
@@ -92,5 +93,6 @@ public class CreateDataUtils {
         str = new String(b, "GBk");//转成中文
         return str;
     }
+
 
 }

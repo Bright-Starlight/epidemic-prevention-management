@@ -32,7 +32,7 @@ public class TransactionalAopConfig {
     /**
      * 配置切入点表达式
      */
-    private static final String POINTCUT_EXPRESSION = "execution(* com.parachute.shikabookcity.service..*.*(..))";
+    private static final String POINTCUT_EXPRESSION = "execution(* com.parachute.main.service..*.*(..))";
 
     /**
      * 事务管理器

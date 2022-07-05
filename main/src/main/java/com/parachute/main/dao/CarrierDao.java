@@ -17,6 +17,9 @@ import java.util.List;
  */
 @Mapper
 public interface CarrierDao extends BaseMapper<Carrier> {
+    
+
+
 
     /**
      * 获取医院名字
@@ -151,6 +154,7 @@ public interface CarrierDao extends BaseMapper<Carrier> {
      */
     @Select("select count(c.id) FROM carrier c WHERE c.create_time like #{date} and c.is_die = 1")
     Integer getNewDieReport(@Param("date")String date);
+
 
 }
 
