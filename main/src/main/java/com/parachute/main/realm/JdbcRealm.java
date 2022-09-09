@@ -43,13 +43,9 @@ public class JdbcRealm extends AuthorizingRealm {
         if (permissions != null){
             permissions.forEach(permission-> p.add(permission.getPermission()));
             info.addStringPermissions(p);
-
         }else {
             throw new AuthorizationException();
         }
-
-
-
         return info;
 
     }
@@ -74,7 +70,6 @@ public class JdbcRealm extends AuthorizingRealm {
             throw new UnknownAccountException();
         }
         String password = user.getPassword();
-
         return new SimpleAuthenticationInfo(principal,password,getName());
     }
 }

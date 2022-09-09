@@ -17,6 +17,7 @@ function CollectionCreateForm  ({visible, onCreate, onCancel,data})  {
             okText="添加"
             cancelText="取消"
             onCancel={onCancel}
+            destroyOnClose
             onOk={() => {
                 form
                     .validateFields()
@@ -30,6 +31,7 @@ function CollectionCreateForm  ({visible, onCreate, onCancel,data})  {
         >
             <Form
                 form={form}
+                preserve={false}
                 layout="vertical"
                 name="form_in_modal"
                 initialValues={{

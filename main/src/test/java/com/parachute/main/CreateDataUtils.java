@@ -75,7 +75,6 @@ public class CreateDataUtils {
             int i1 = ran.nextInt(80);
             carrier.setFromHospital(i1 + "");
             carrier.setIsolationTime(LocalDateTime.now());
-            int a = (int) (Math.random() * 3);
             carrierService.insert(carrier);
         }
     }

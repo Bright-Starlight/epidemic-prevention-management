@@ -13,6 +13,7 @@ function CollectionCreateForm ({visible, onCreate, onCancel})  {
             okText="添加"
             cancelText="取消"
             onCancel={onCancel}
+            destroyOnClose
             onOk={() => {
                 form
                     .validateFields()
@@ -31,6 +32,7 @@ function CollectionCreateForm ({visible, onCreate, onCancel})  {
                 initialValues={{
                     modifier: 'public',
                 }}
+                preserve={false}
             >
                 <Form.Item
                     name="hospitalName"
@@ -86,10 +88,17 @@ function CreateHospital(props)  {
             }else {
                 message.error(res.data.message)
             }
+            values = null
 
         })
 
     };
+    const  onCancel =
+        () => {
+            console.log("-------------------")
+
+            setVisible(false);
+        }
 
     return (
         <div>
@@ -104,9 +113,7 @@ function CreateHospital(props)  {
             <CollectionCreateForm
                 visible={visible}
                 onCreate={onCreate}
-                onCancel={() => {
-                    setVisible(false);
-                }}
+                onCancel={onCancel}
             />
         </div>
     );

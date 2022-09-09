@@ -13,6 +13,7 @@ function CollectionCreateForm  ({visible, onCreate, onCancel,data})  {
     console.log(data,"------------------")
     return (
         <Modal
+            destroyOnClose
             visible={visible}
             title="添加医院信息"
             okText="添加"
@@ -33,6 +34,7 @@ function CollectionCreateForm  ({visible, onCreate, onCancel,data})  {
                 form={form}
                 layout="vertical"
                 name="form_in_modal"
+                preserve={false}
                 initialValues={{
                     modifier: 'public',
                 }}

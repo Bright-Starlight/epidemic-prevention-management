@@ -17,6 +17,7 @@ function CollectionCreateForm  ({visible, onCreate, onCancel,data})  {
             title="添加医院信息"
             okText="添加"
             cancelText="取消"
+            destroyOnClose
             onCancel={onCancel}
             onOk={() => {
                 form
@@ -33,6 +34,7 @@ function CollectionCreateForm  ({visible, onCreate, onCancel,data})  {
                 form={form}
                 layout="vertical"
                 name="form_in_modal"
+                preserve={false}
                 initialValues={{
                     modifier: 'public',
                 }}

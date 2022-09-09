@@ -17,6 +17,7 @@ function CollectionCreateForm  ({visible, onCreate, onCancel,data})  {
             okText="添加"
             cancelText="取消"
             onCancel={onCancel}
+            destroyOnClose
             onOk={() => {
                 form
                     .validateFields()
@@ -35,6 +36,7 @@ function CollectionCreateForm  ({visible, onCreate, onCancel,data})  {
                 initialValues={{
                     modifier: 'public',
                 }}
+                preserve={false}
             >
 
                 <Form.Item
