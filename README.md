@@ -1,37 +1,66 @@
 # epidemic-prevention-management
 
 #### 介绍
-疫情防护管理系统
+疫情防护管理系统；本系统用于统计新冠病毒疫情
+
+##### 主要功能
+
+- 登录页面：可以设置自己医院logo
+
+  [![xyYfbt.png](https://s1.ax1x.com/2022/10/20/xyYfbt.png)](https://imgse.com/i/xyYfbt)
+
+- 控制台首页：统计1个月来自愈，确诊，死亡人数；统计累计自愈，确诊，死亡人数；
+
+  [![xyYdD1.jpg](https://s1.ax1x.com/2022/10/20/xyYdD1.jpg)](https://imgse.com/i/xyYdD1)
+
+  [![xyNnwq.jpg](https://s1.ax1x.com/2022/10/20/xyNnwq.jpg)](https://imgse.com/i/xyNnwq)
+
+- 医院管理：统计接受病人的医院
+
+  [![xyNpwt.png](https://s1.ax1x.com/2022/10/20/xyNpwt.png)](https://imgse.com/i/xyNpwt)
+
+- 密切接触管理：统计密接人数
+
+  [![xytxOA.png](https://s1.ax1x.com/2022/10/20/xytxOA.png)](https://imgse.com/i/xytxOA)
+
+- 确诊管理：统计确诊人数
+
+  [![xytvyd.png](https://s1.ax1x.com/2022/10/20/xytvyd.png)](https://imgse.com/i/xytvyd)
+
+- 治愈管理：统计治愈人数
+
+  [![xytjQH.png](https://s1.ax1x.com/2022/10/20/xytjQH.png)](https://imgse.com/i/xytjQH)
+
+- 遇难管理：统计死亡人数
+
+  [![xyN9TP.png](https://s1.ax1x.com/2022/10/20/xyN9TP.png)](https://imgse.com/i/xyN9TP)
+
+- 医务人员详情：[![xyNPFf.png](https://s1.ax1x.com/2022/10/20/xyNPFf.png)](https://imgse.com/i/xyNPFf)
 
 #### 软件架构
-软件架构说明
+
+软件架构说明：
+
+​		前端：react + antd
+
+​        后端：spring Boot + mybatis-plus
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. 拉取代码
+
+2. 进入/app-ui，输入cmd命令yarn install 
+
+3. 测试账号：
+
+   用户名：241760
+
+   密码：241760
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  前端启动：进入/app-ui，输入cmd命令yarn run start
+2.  后端运行src/main/java/com/parachute/main/MainApplication.java
+3.  页面地址http://localhost:3000/
 
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)

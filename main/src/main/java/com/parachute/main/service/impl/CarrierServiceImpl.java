@@ -29,8 +29,12 @@ public class CarrierServiceImpl extends ServiceImpl<CarrierDao, Carrier> impleme
 
     @Override
     public void insert(Carrier carrier) {
-        carrier.setCreateTime(LocalDateTime.now());
-        carrier.setUpdateTime(LocalDateTime.now());
+        if (carrier.getCreateTime() == null){
+            carrier.setCreateTime(LocalDateTime.now());
+        }
+        if (carrier.getUpdateTime() == null){
+            carrier.setUpdateTime(LocalDateTime.now());
+        }
         carrier.setUpdateName(RoleConstants.ADMIN);
         this.save(carrier);
     }

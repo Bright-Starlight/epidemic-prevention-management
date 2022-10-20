@@ -7,6 +7,7 @@ import com.parachute.main.entity.Hospital;
 import com.parachute.main.service.CarrierService;
 import com.parachute.main.service.HospitalService;
 import com.parachute.main.utils.AreaCodeList;
+import com.parachute.main.utils.DateUtils;
 import com.parachute.main.utils.NameRandom;
 import com.parachute.main.utils.RandomValue;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 @SpringBootTest
 public class CreateDataUtils {
@@ -61,7 +64,7 @@ public class CreateDataUtils {
     @Test
     public  void createDataPerson() throws Exception {
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3000; i++) {
             Carrier carrier = new Carrier();
             String chineseName = NameRandom.getChineseName();
             String[] split = chineseName.split(":");
@@ -73,11 +76,31 @@ public class CreateDataUtils {
             carrier.setIdentityCard(AreaCodeList.generate());
             carrier.setCause("未知");
             int i1 = ran.nextInt(80);
+            int flag = ran.nextInt(3);
+            int day = ran.nextInt(30);
+            switch (flag){
+                case 0 :
+                    carrier.setIsDie("1");
+                    carrier.setCreateTime(LocalDateTime.now().minusDays(day + 1));
+                    carrier.setIsolationTime(LocalDateTime.now().minusDays(day + 1));
+                    break;
+                case 1 :
+                    carrier.setIsCure("1");
+                    carrier.setCreateTime(LocalDateTime.now().minusDays(day + 1));
+                    carrier.setIsolationTime(LocalDateTime.now().minusDays(day + 1));
+                    break;
+                case 2 :
+                    carrier.setIsConfirm("1");
+                    carrier.setCreateTime(LocalDateTime.now().minusDays(day + 1));
+                    carrier.setIsolationTime(LocalDateTime.now().minusDays(day + 1));
+                    break;
+            }
             carrier.setFromHospital(i1 + "");
-            carrier.setIsolationTime(LocalDateTime.now());
+
             carrierService.insert(carrier);
         }
     }
+
 
 
     public static String create() throws Exception {

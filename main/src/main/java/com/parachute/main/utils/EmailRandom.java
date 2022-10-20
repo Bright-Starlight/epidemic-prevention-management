@@ -1,5 +1,7 @@
 package com.parachute.main.utils;
 
+import java.util.Random;
+
 /**
  * 随机邮箱
  * 代码源于网络 由kingYiFan整理  create2019/05/24
@@ -33,9 +35,14 @@ public class EmailRandom {
 
     //  代码源于网络 由kingYiFan整理  create2019/05/24
     public static void main(String[] args) {
+//        for (int i = 0; i < 10; i++) {
+//            String email = getEmail(1, i);
+//            System.out.println(email);
+//        }
+        Random random = new Random();
+
         for (int i = 0; i < 10; i++) {
-            String email = getEmail(1, i);
-            System.out.println(email);
+            System.out.println(random.nextInt(3));
         }
     }
 }

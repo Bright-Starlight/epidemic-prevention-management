@@ -59,7 +59,13 @@ public class DateUtils {
         }
         return date;
     }
-        public static List<String> getNearlyMonthDates() {
+
+    /**
+     * 得到近月日期
+     *
+     * @return {@link List}<{@link String}>
+     */
+    public static List<String> getNearlyMonthDates() {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Calendar c = Calendar.getInstance();
             //过去一月
