@@ -75,11 +75,13 @@ public class DateUtils {
 
 
     /**
+     * 获取日期之间
      * 补全给定起止时间区间内的所有日期
-     * @param startTime
-     * @param endTime
-     * @param isIncludeStartTime
-     * @return
+     *
+     * @param startTime          开始时间
+     * @param endTime            结束时间
+     * @param isIncludeStartTime 是包括开始时间
+     * @return {@link List}<{@link String}>
      */
     public static List<String> getBetweenDates(String startTime, String endTime,boolean isIncludeStartTime){
         List<String> result = new ArrayList<>();
@@ -103,7 +105,6 @@ public class DateUtils {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String str = sdf.format(dd.getTime());
                 result.add(str);
-                System.out.println(str);
             }
         }catch (Exception e) {
             e.printStackTrace();

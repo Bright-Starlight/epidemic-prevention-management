@@ -36,10 +36,11 @@ public class UserController {
 
     @RequestMapping("login")
     public Result login(@RequestBody User user){
+
         //获取用户名和密码
         String name = user.getUserName();
         String password = user.getPassword();
-        //存入shiro Token当中
+        //存入shiro Token当中、
         UsernamePasswordToken token = new UsernamePasswordToken(name,password);
         Subject subject = SecurityUtils.getSubject();
         try {

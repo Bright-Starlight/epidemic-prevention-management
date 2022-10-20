@@ -55,9 +55,9 @@ mybatis-plus:
       #      table-prefix: tb_
       # id生成策略 数据库自增
       id-type: auto
-  configuration:
-    # 日志
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  configuration:
+#    # 日志
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 # 分页配置
 pagehelper:

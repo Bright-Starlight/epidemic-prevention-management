@@ -33,7 +33,7 @@ public interface UserDao extends BaseMapper<User> {
     /**
      * 获得许可
      *
-     * @param primaryPrincipal 小学校长
+     * @param
      * @return {@link List}<{@link Permission}>
      */
     @Select("SELECT p.permission from `user` u,user_role ur,role_permission rp,permission p WHERE u.id = ur.user_id and ur.role_id = rp.role_id and rp.permission_id = p.id\n" +

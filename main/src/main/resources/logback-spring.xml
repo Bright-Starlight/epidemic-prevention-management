@@ -207,7 +207,7 @@
             <appender-ref ref="ERROR_FILE" />
             <appender-ref ref="ALL_FILE" />
         </root>
-        <logger name="com.monster.springbootstudy" level="debug"/> <!-- 开发环境, 指定某包日志为debug级 -->
+
     </springProfile>
 
     <springProfile name="test">
@@ -219,7 +219,6 @@
             <appender-ref ref="ERROR_FILE" />
             <appender-ref ref="ALL_FILE" />
         </root>
-        <logger name="com.xusanduo.demo" level="info"/> <!-- 测试环境, 指定某包日志为info级 -->
     </springProfile>
 
     <springProfile name="prod">
@@ -232,8 +231,6 @@
             <appender-ref ref="ERROR_FILE" />
             <appender-ref ref="ALL_FILE" />
         </root>
-        <logger name="com.xusanduo.demo" level="warn"/> <!-- 生产环境, 指定某包日志为warn级 -->
-        <logger name="com.xusanduo.demo.MyApplication" level="info"/> <!-- 特定某个类打印info日志, 比如application启动成功后的提示语 -->
     </springProfile>
 
 </configuration>
